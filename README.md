@@ -19,7 +19,11 @@ The **Sign Language Class Website** is an interactive application designed to re
 Before running the application, make sure you have the following libraries installed. You can use the provided commands to install them.
 To install the required libraries, you can use the following command:
 ```bash
-pip install fastapi tensorflow pillow numpy mysql-connector-python 
+pip install fastapi
+pip install tensorflow
+pip install pillow
+pip install numpy
+pip install mysql-connector-python
 ```
 
 ### Setting Up a Virtual Environment (Optional)
