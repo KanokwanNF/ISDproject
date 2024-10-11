@@ -5,6 +5,36 @@ by 65070006(nf), 65070167(np)
 ## Description
 The **Sign Language Class Website** is an interactive application designed to recognize American Sign Language (ASL) from images. Users can upload images of hand signs, which the application processes using deep learning techniques. It provides immediate feedback on whether the sign corresponds to the intended letter, making it an engaging and effective tool for learning ASL.
 
+## Directory Structure
+The project is organized into a clear directory structure to facilitate easy navigation and maintenance. Below is a breakdown of the important directories and files:
+
+### Backend
+
+- **mymodel/**
+  - This folder contains the following:
+    1. **dataset/**: This subfolder holds the datasets used for training and testing the models.
+    2. **model/**: This subfolder includes the trained model files that are utilized for inference and predictions.
+- **myapp.py**: 
+  - This is the main application file containing the FastAPI implementation for the API. It handles incoming requests, processes images, and communicates with the database.
+
+### Frontend
+
+- **images/**: 
+  - This folder contains images used for displaying on the web pages. It includes all the visual assets that enhance the user interface and experience.
+- **pages/**: 
+  - This folder contains various HTML files that make up the different web pages of the application:
+    1. **index.html**: The main landing page of the website.
+    2. **popup.html**: A page for displaying pop-up notifications and messages.
+    3. **aboutus.html**: A page providing information about the project and the team behind it.
+    4. **latest.html**: A page showcasing the latest updates or features of the application.
+    5. **test.html**: A page for testing functionalities and user interactions.
+       
+### hand_test
+  - This folder is used to store hand images that serve as input during the testing phase of the application. It allows for easy access to specific hand images for testing sign language recognition functionalities.
+
+### imagesAPI 
+  - directory serves as a storage location for the uploaded images, facilitating organized management of the images and ensuring easy access for processing and analysis.
+
 ## Prerequisites
 - **Python 3.8 or later**
 - **Required Libraries**:
