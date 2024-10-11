@@ -1,9 +1,9 @@
-# Sign Language Recognition Website - ISDproject (ﾉ◕ヮ◕)ﾉ*:･ﾟ
+# Sign Language Class Website - ISDproject (ﾉ◕ヮ◕)ﾉ*:･ﾟ
 by 65070006(nf), 65070167(np)
 
 
 ## Description
-The **Sign Language Recognition Website** is an interactive application designed to recognize American Sign Language (ASL) from images. Users can upload images of hand signs, which the application processes using deep learning techniques. It provides immediate feedback on whether the sign corresponds to the intended letter, making it an engaging and effective tool for learning ASL.
+The **Sign Language Class Website** is an interactive application designed to recognize American Sign Language (ASL) from images. Users can upload images of hand signs, which the application processes using deep learning techniques. It provides immediate feedback on whether the sign corresponds to the intended letter, making it an engaging and effective tool for learning ASL.
 
 ## Prerequisites
 - **Python 3.8 or later**
@@ -56,7 +56,7 @@ pip install fastapi tensorflow pillow numpy mysql-connector-python
 - The model predicts the corresponding character for each sign.
 
 ### Results
-- The application will return whether the predicted characters match the expected characters.
+- The website will return whether the predicted characters match the expected characters.
 - Results are saved in a MySQL database for further analysis.
 
 ## Important Endpoints
@@ -85,5 +85,5 @@ pip install fastapi tensorflow pillow numpy mysql-connector-python
   - `is_correct` (BOOLEAN)
 
 ## Summary
-The **Sign Language Recognition Website** aims to provide an interactive way to learn ASL through image recognition. We encourage contributions and suggestions to enhance the application's capabilities. For any inquiries, please find the answer by yourself. For anyone who has read this far, we want to say
+The **Sign Language Website** aims to provide an interactive way to learn ASL through image recognition. We encourage contributions and suggestions to enhance the application's capabilities. For any inquiries, please find the answer by yourself. For anyone who has read this far, we want to say
 **"Thank you for my hard work"**
