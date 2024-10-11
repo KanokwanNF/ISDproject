@@ -119,5 +119,4 @@ pip install mysql-connector-python
   - `is_correct` (BOOLEAN)
 
 ## Summary
-The **Sign Language Website** aims to provide an interactive way to learn ASL through image recognition. We encourage contributions and suggestions to enhance the application's capabilities. For any inquiries, please find the answer by yourself. For anyone who has read this far, we want to say
-**"Thank you for our hard work ♡"**
+The **Sign Language Website** aims to provide an interactive way to learn ASL through image recognition. We encourage contributions and suggestions to enhance the application's capabilities. For any inquiries, please find the answer by yourself. **"Thank you for our hard work ♡"**
