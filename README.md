@@ -26,7 +26,7 @@ The project is organized into a clear directory structure to facilitate easy nav
     1. **index.html**: The main landing page of the website.
     2. **popup.html**: A page for displaying pop-up notifications and messages.
     3. **aboutus.html**: A page providing information about the project and the team behind it.
-    4. **latest.html**: A page showcasing the latest updates or features of the application.
+    4. **letstest.html**: A page showcasing the latest updates or features of the application.
     5. **test.html**: A page for testing functionalities and user interactions.
        
 ### hand_test
