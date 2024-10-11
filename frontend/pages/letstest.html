@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>LetsTest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-white flex flex-col justify-between">
+    <div class="flex flex-col items-center justify-center flex-grow">
+        <!-- เนื้อหาหลัก -->
+        <div class="relative flex flex-col justify-center items-center px-6 md:px-16 lg:px-32">
+            <!-- โลโก้ -->
+            <img class=" w-auto max-w-[250px] md:max-w-[250px] lg:max-w-[350px]" src="/image/icon/logo_big.png" alt="ASL Logo">
+        </div>
+
+        <div class="flex flex-col items-center justify-center text-center text-black p-4 z-10">
+            <!-- ข้อความชวนให้เริ่มการทดสอบ ASL -->
+            <p class="text-lg md:text-2xl mb-1 block" style="letter-spacing: 2px;">
+                " Let's start with a quick quiz to test your
+            </p>
+            <p class="text-lg md:text-2xl mb-1 block" style="letter-spacing: 2px;">
+                ASL alphabet skills! Are you ready to challenge yourself
+            </p>
+            <p class="text-lg md:text-2xl mb-1 block" style="letter-spacing: 2px;">
+                and see how many letters you can recognize and
+            </p>
+            <p class="text-lg md:text-2xl mb-1 block" style="letter-spacing: 2px;">
+                sign correctly? "
+            </p>
+        </div>
+
+        <div class="flex justify-center mt-2 font-bold text-2xl md:text-3xl z-10" style="letter-spacing: 3px">
+            <!-- ข้อความชวนเริ่มทดสอบ -->
+            Let’s dive in!
+        </div>
+
+        <!-- ปุ่มเริ่มต้นใต้รูปภาพ -->
+        <div class="flex justify-center mt-4 z-10">
+            <a href="test.html">
+                <button
+                    class="flex items-center text-white py-2 px-6 rounded-full z-20 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 text-xl md:text-4xl lg:text-4xl"
+                    style="background-color: #2E3136; letter-spacing: 3px;">
+                    GET STARTED
+                    <img src="/image/icon/right2.png" alt="Emoticon"
+                        class="ml-3 w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"> <!-- ขนาดภาพปรับตามหน้าจอ -->
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- ตัวอักษรที่ลอยอยู่บนพื้นหลัง -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <!-- ตัวอักษรแต่ละตัวที่ลอยอยู่บนพื้นหลัง -->
+        <span class="absolute text-[48px] md:text-[82px] font-bold text-[#FDDE55]"
+            style="top: 10%; left: 13%; transform: rotate(-30deg);">F</span>
+        <span class="absolute text-[32px] md:text-[48px] font-bold text-[#99bc85]"
+            style="bottom: 18%; left: 10%; transform: rotate(10deg);">M</span>
+        <img src="/image/bg/flower_r.png" alt="R" class="absolute" style="z-index: 0; top: 40%; right: 20%; width: 32px; height: auto;">
+        <span class="absolute text-[32px] md:text-[32px] font-bold text-[#FFBB70]"
+            style="top: 50%; right: 10%; transform: rotate(40deg);">W</span>
+        <span class="absolute text-[32px] md:text-[56px] font-bold text-[#ef94ca]"
+            style="top: 5%; right: 5%; transform: rotate(10deg);">K</span>
+        <img src="/image/bg/flower_pink.png" alt="R" class="absolute" style="z-index: 0;top: 5%; right: 45%; width: 26px; height: auto;">
+        <span class="absolute text-[20px] md:text-[32px] font-bold text-[#d0c3f1]"
+            style="bottom: 15%; right: 30%; transform: rotate(10deg);">S</span>
+        <img src="/image/bg/flower_pink.png" alt="R" class="absolute" style="z-index: 0;bottom: 5%; left: 25%; width: 26px; height: auto;">
+
+        <!-- ภาพพื้นหลัง -->
+        <span class="absolute bottom-0 left-0">
+            <img src="/image/bg/dog.png" alt="dog" class="w-36 h-16 md:w-60 md:h-32">
+        </span>
+        <span class="absolute bottom-0 right-0">
+            <img src="/image/bg/grass.png" alt="grass" class="w-36 h-16 md:w-96 md:h-24">
+        </span>
+    </div>
+</body>
+
+</html>

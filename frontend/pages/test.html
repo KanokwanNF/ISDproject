@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Montserrat", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+
+    <body class="min-h-screen">
+        <!-- Navigation bar -->
+        <nav id="navbar"
+            class="fixed top-4 left-0 right-0 max-w-[90%] z-20 px-4 mx-auto rounded-3xl transition-all duration-300 bg-[#9EDDFF]">
+            <!-- แถบการนำทางที่มีการจัดตำแหน่งแบบ fixed ที่ด้านบนของหน้าจอ -->
+
+            <div class="w-full">
+                <div class="text-xl items-center flex justify-between w-full text-black h-16 px-4">
+                    <!-- ช่องสำหรับจัดวางเนื้อหาภายในแถบการนำทาง -->
+
+                    <div class="h-full flex items-center">
+                        <img class="h-10" src="/image/icon/logo.png" alt="logo">
+                        <!-- โลโก้ของเว็บไซต์ -->
+                    </div>
+
+                    <div class="hidden md:flex gap-16 items-center">
+                        <!-- ลิงก์เมนูที่แสดงเมื่อหน้าจอมีขนาดใหญ่ -->
+                        <a class="text-black" href="index.html">HOME</a>
+                        <a class="text-black" href="aboutus.html">ABOUT US</a>
+                    </div>
+
+                    <div class="block md:hidden">
+                        <!-- ปุ่มเมนูที่แสดงเมื่อหน้าจอมีขนาดเล็ก -->
+                        <button id="menu-toggle" class="focus:outline-none">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-2 mt-4 px-4">
+                    <!-- เมนูสำหรับอุปกรณ์เคลื่อนที่ที่ซ่อนอยู่ -->
+                    <a class="text-black py-2" href="index.html">HOME</a>
+                    <a class="text-black py-2" href="aboutus.html">ABOUT US</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Script for mobile menu toggle -->
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            let lastScrollTop = 0; // ตัวแปรสำหรับเก็บตำแหน่งการเลื่อนล่าสุด
+
+            menuToggle.addEventListener('click', () => {
+                // เปลี่ยนสถานะการแสดงผลของเมนูเมื่อคลิกปุ่ม
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            window.addEventListener('scroll', () => {
+                // ฟังก์ชันสำหรับจัดการการเลื่อนหน้า
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    // หากเลื่อนลง ให้ซ่อน navbar
+                    navbar.style.transform = `translateY(-${navbar.offsetHeight + 16}px)`; // 16px corresponds to top-4
+                } else {
+                    // หากเลื่อนขึ้น ให้แสดง navbar
+                    navbar.style.transform = "translateY(0)";
+                }
+                lastScrollTop = scrollTop; // อัปเดตตำแหน่งเลื่อนล่าสุด
+            });
+        </script>
+
+        <div class="relative">
+            <!-- ส่วนของคำถามที่แสดงถึงการทำมือสะกดตัวอักษรใน ASL -->
+            <p class="text-center text-2xl md:text-4xl text-black mt-28 md:mt-28"
+                style="letter-spacing: 1.5px; line-height: 1.5;">
+                HOW DO YOU FINGERSPELL <br> THE ALPHABET IN ASL?
+            </p>
+
+            <!-- Grid container to split into two columns -->
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-6 z-0 overflow-hidden h-auto w-full px-6 md:px-32 py-6 mt-16">
+
+                <!-- Image of Quiz Section -->
+                <div class="flex flex-col items-center">
+                    <!-- Image of Quiz -->
+                    <div class="flex justify-center">
+                        <img id="wordImage" alt="Word Image"
+                            class="w-full max-w-[300px] h-[200px] object-cover md:max-w-[400px] md:h-[250px] lg:max-w-[450px] lg:h-[300px]">
+                        <!-- แสดงภาพที่เกี่ยวข้องกับคำในแบบทดสอบ -->
+                    </div>
+
+                    <!-- Word Display -->
+                    <div
+                        class="flex justify-center mt-10 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 relative z-20">
+                        <div class="bg-[#2E3136] py-2 px-24 rounded-full">
+                            <p class="text-white text-2xl md:text-4xl" style="letter-spacing: 3px;" id="wordText"></p>
+                            <!-- แสดงข้อความคำที่ต้องสะกด -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Items Section -->
+                <div class="grid grid-cols-1 gap-8 w-full justify-items-center mt-10 md:mt-0 lg:mt-0 mb-10" id="event">
+                    <!-- Event Item Example -->
+                    <div>
+                        <!-- Content for Event Item Here -->
+                        <!-- ตัวอย่างของเนื้อหาสำหรับแต่ละรายการในเหตุการณ์ -->
+                    </div>
+                </div>
+
+                <!-- Other Absolute Positioned Images -->
+                <div class="absolute top-0 left-0 w-full h-full pointer-events-none ">
+                    <!-- Additional elements such as flower images -->
+                    <!-- อาจจะมีองค์ประกอบเพิ่มเติมเช่นภาพดอกไม้ -->
+                </div>
+            </div>
+
+            <!-- Bottom Section with Button and Result -->
+            <div class="min-w-full flex flex-col xl:px-32 md:px-16 md:pb-16 px-2 md:px-0">
+                <div class="flex justify-center items-end h-full">
+                    <div class="rounded-lg  relative z-20">
+                        <button id="sendButton"
+                            class="flex items-center font-semibold text-black py-2 px-6 rounded-full text-2xl md:text-4xl lg:text-4xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300"
+                            style="background-color: #FFD966;font-family: 'Varela Round', sans-serif;letter-spacing: 2px">
+                            SEND
+                            <!-- ปุ่มสำหรับส่งคำตอบ -->
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex justify-center items-center relative z-20"
+                    style=" font-family: 'Varela Round', sans-serif;letter-spacing: 2px">
+                    <div class="bg-[#9EDDFF] rounded-full flex items-center z-20 lg:p-4 p-2 mb-8 md:mb-0">
+                        <p id="predictions"
+                            class="text-xl mr-2 font-bold text-sm md:text-xl lg:text-xl block md:inline md:w-auto">YOUR
+                            ANSWER :</p>
+                        <p id="result"
+                            class="text-xl text-center inline-flex items-center whitespace-nowrap  text-sm md:text-xl lg:text-xl">
+                            Waiting for result...</p>
+                        <!-- แสดงผลลัพธ์ที่ได้จากการทำนาย -->
+                    </div>
+
+                    <div class="ml-4">
+                        <button id="nextButton"
+                            class="bg-[#FF8E8F] rounded-full transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 relative z-20 mb-10 lg:mb-0"
+                            onclick="goToNextWord()">
+                            <img src="/image/icon/next-action.png" alt="Next"
+                                class="w-14 h-14 md:w-16 md:h-16 lg:w-16 lg:h-16">
+                            <!-- ปุ่มสำหรับไปยังคำถัดไป -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+                <!-- รูปภาพดอกไม้พื้นหลังที่จัดเรียงแบบ absolute -->
+                <img src="/image/bg/flower_gb.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 5%; left: 10%; transform: rotate(-30deg); width: 32px; height: auto;">
+                <img src="/image/bg/flower_red.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 45%; left: 2%; transform: rotate(-30deg); width: 32px; height: auto;">
+                <img src="/image/bg/flower_yl.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 80%; left: 35%; transform: rotate(-30deg); width: 24px; height: auto;">
+                <img src="/image/bg/flower_green.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 95%; left: 15%; transform: rotate(-30deg); width: 24px; height: auto;">
+                <img src="/image/bg/flower_pink.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 35%; left: 50%; transform: rotate(-30deg); width: 24px; height: auto;">
+                <img src="/image/bg/flower_bb.png" alt="P" class="absolute"
+                    style="z-index: 0; bottom: 40%; left: 85%; transform: rotate(-30deg); width: 28px; height: auto;">
+                <img src="/image/bg/flower_blue.png" alt="P" class="absolute"
+                    style="z-index: 0; top: 7%; right: 13%; transform: rotate(-30deg); width: 28px; height: auto;">
+                <img src="/image/bg//dog_test.png" alt="dog"
+                    class="absolute bottom-0 right-0 w-[200px] h-[250px] md:w-[300px] md:h-[330px] z-0">
+                <!-- รูปภาพสุนัขที่แสดงในมุมล่างขวา -->
+            </div>
+
+            <!-- Pop-up Notification for Complete -->
+            <div id="completeNotification"
+                class="fixed inset-0 bg-gray-800 bg-opacity-90 flex items-center justify-center hidden z-50 ">
+                <div id="popupContent" class="bg-green-600 p-6 rounded-lg shadow-lg text-center space-y-4 relative z-50"
+                    style="font-family: 'Varela Round', sans-serif;letter-spacing: 2px">
+                    <!-- เพิ่มไอคอนรูปภาพข้างหน้าสุด -->
+                    <img src="/image/icon/finish-line.png" alt="Complete Icon" class="w-48 h-48 mx-auto">
+                    <h2 class="text-6xl font-semibold text-white relative z-5">Complete!</h2> <!-- ตัวอักษรสีขาว -->
+                </div>
+            </div>
+            <!-- Div for displaying results -->
+            <div id="resultDisplay"
+                class="block mt-4 p-4 text-green-800 mx-auto text-center sm:w-11/12 md:w-8/12 lg:w-6/12 xl:w-4/12"
+                style="font-family: 'Varela Round', sans-serif; letter-spacing: 2px">
+                <p class="text-lg md:text-xl font-semibold">Results:</p>
+                <p class="text-sm md:text-lg">Correct Attempts: <span id="correctAttempts">0</span></p>
+                <p class="text-sm md:text-lg">Total Attempts: <span id="totalAttempts">0</span></p>
+                <p class="text-sm md:text-lg">Correct Percentage: <span id="percentageCorrect">0.00%</span></p>
+            </div>
+            <script>
+                // สร้างอ็อบเจ็กต์เพื่อเก็บ URL ของไอคอน ASL
+                const aslIcons = {
+                    "N": "/image/alphabet/N.png",
+                    "A": "/image/alphabet/A.png",
+                    "I": "/image/alphabet/I.png",
+                    "Q": "/image/alphabet/Q.png",
+                    "Y": "/image/alphabet/Y.png",
+                    "P": "/image/alphabet/P.png",
+                    "L": "/image/alphabet/L.png",
+                    "T": "/image/alphabet/T.png",
+                    "C": "/image/alphabet/C.png",
+                    "V": "/image/alphabet/V.png"
+                };
+
+                // คำที่ต้องการแสดง
+                const words = ["N", "A", "I", "Q", "Y", "P", "L", "T", "C", "V"];
+                // เก็บ URL ของภาพสำหรับแต่ละตัวอักษร
+                const images = {
+                    "N": "/image/alphabet/N.png",
+                    "A": "/image/alphabet/A.png",
+                    "I": "/image/alphabet/I.png",
+                    "Q": "/image/alphabet/Q.png",
+                    "Y": "/image/alphabet/Y.png",
+                    "P": "/image/alphabet/P.png",
+                    "L": "/image/alphabet/L.png",
+                    "T": "/image/alphabet/T.png",
+                    "C": "/image/alphabet/C.png",
+                    "V": "/image/alphabet/V.png"
+                }
+                // ประกาศตัวแปร tasks ที่เก็บค่า task_id ตามคำ
+                const tasks = {
+                    "N": 1,
+                    "A": 2,
+                    "I": 3,
+                    "Q": 4,
+                    "Y": 5,
+                    "P": 6,
+                    "L": 7,
+                    "T": 8,
+                    "C": 9,
+                    "V": 10
+                };
+
+                // ดึงค่า index ของคำปัจจุบันจาก localStorage ถ้าไม่มีให้เริ่มต้นที่ 0
+                let currentWordIndex = localStorage.getItem('currentWordIndex') ? parseInt(localStorage.getItem('currentWordIndex')) : 0;
+                // ดึงจำนวนภาพที่อัปโหลดสำหรับคำปัจจุบันจาก localStorage
+                let uploadedImagesCount = localStorage.getItem(`uploadedImagesCount${currentWordIndex}`) ? parseInt(localStorage.getItem(`uploadedImagesCount${currentWordIndex}`)) : 0;
+
+                function displayWord() {
+                    // ดึงคำปัจจุบันและแสดงในหน้า
+                    const currentWord = words[currentWordIndex];
+                    document.getElementById('wordText').textContent = currentWord; // แสดงตัวอักษร
+                    document.getElementById('wordImage').src = images[currentWord]; // แสดงภาพตัวอักษร
+
+                    const eventContainer = document.getElementById('event');
+                    eventContainer.innerHTML = ''; // เคลียร์เนื้อหาก่อนหน้า
+
+                    // สร้างการ์ดสำหรับแต่ละตัวอักษรในคำปัจจุบัน
+                    for (let i = 0; i < currentWord.length; i++) {
+                        const letter = currentWord[i];
+                        const eventItem = document.createElement('div');
+                        eventItem.className = "relative bg-[#FEF9F6] p-4 shadow-md rounded-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 w-72 h-96 flex flex-col items-center justify-between mb-20";
+
+                        // สร้างไอคอน ASL
+                        const aslIcon = document.createElement('img');
+                        aslIcon.src = aslIcons[letter];
+                        aslIcon.alt = letter + " ASL Hand Icon";
+                        aslIcon.className = "w-16 h-16 absolute top-[-24px] left-[-1px] z-10";
+                        eventItem.appendChild(aslIcon); // เพิ่มไอคอน ASL ลงในการ์ด
+
+                        // สร้าง container สำหรับภาพ
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = "flex items-center h-full rounded-lg overflow-hidden cursor-pointer";
+
+                        const imgElement = document.createElement('img');
+                        imgElement.id = `eventPoster${i}`; // ตั้ง ID ตามลำดับ
+                        imgElement.className = "w-full h-full object-cover rounded-lg hidden"; // ซ่อนในตอนแรก
+                        imgElement.alt = `Uploaded Image ${i + 1}`;
+
+                        const uploadIcon = document.createElement('img');
+                        uploadIcon.src = "/image/icon/upload.png"; // ไอคอนอัปโหลด
+                        uploadIcon.alt = "Upload Icon";
+                        uploadIcon.className = "w-28 h-28";
+                        uploadIcon.id = `uploadIcon${i}`; // ตั้ง ID ของไอคอนอัปโหลด
+
+                        imgContainer.appendChild(imgElement); // เพิ่มภาพที่อัปโหลดลงใน container
+                        imgContainer.appendChild(uploadIcon); // เพิ่มไอคอนอัปโหลด
+                        eventItem.appendChild(imgContainer); // เพิ่ม container ลงในการ์ด
+
+                        // Letter Circle
+                        const letterCircle = document.createElement('div');
+                        // สร้าง div สำหรับวงกลมที่มีตัวอักษร โดยกำหนด class สำหรับรูปแบบ
+                        letterCircle.className = "absolute mb-10 bottom-[-15px] right-[-36px] bg-black text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl";
+                        letterCircle.style.fontFamily = "'Montserrat', sans-serif;";
+                        letterCircle.textContent = letter;
+                        eventItem.appendChild(letterCircle);
+
+                        // Options for Uploading Images
+                        imgContainer.onclick = () => {
+                            const optionsContainer = document.createElement('div');
+                            // สร้าง div สำหรับตัวเลือกการอัปโหลดภาพ
+                            optionsContainer.className = "flex space-x-2 mt-2 absolute z-20";
+                            optionsContainer.style.top = "60%"; // ตำแหน่งแนวตั้งของตัวเลือก
+                            optionsContainer.style.left = "50%"; // ตำแหน่งแนวนอนของตัวเลือก
+                            optionsContainer.style.transform = "translateX(-50%)"; // จัดกลางตัวเลือก
+
+                            const cameraButton = document.createElement('button');
+                            const cameraIcon = document.createElement('img');
+                            // กำหนดไอคอนกล้อง
+                            cameraIcon.src = '/image/icon/camera.png';
+                            cameraIcon.alt = "Open Camera";
+                            cameraIcon.className = "w-24 h-12"; // กำหนดขนาดของไอคอนกล้อง
+                            cameraButton.appendChild(cameraIcon);
+                            cameraButton.className = "px-2 py-2 rounded-full flex items-center transition duration-200 ease-in-out hover:bg-[#F0A8D0] w-16 h-16";
+                            // เมื่อคลิกที่ปุ่มกล้อง จะเปิดกล้องและลบตัวเลือก
+                            cameraButton.onclick = () => {
+                                openCamera(imgElement.id, uploadIcon.id); // Pass the index here
+                                optionsContainer.remove(); // Remove options after selecting
+                            };
+                            optionsContainer.appendChild(cameraButton);
+
+                            // File Input
+                            const fileInput = document.createElement('input');
+                            fileInput.type = 'file'; // กำหนดชนิด input เป็นไฟล์
+                            fileInput.accept = 'image/*'; // รับเฉพาะไฟล์ภาพ
+                            fileInput.className = "hidden"; // ซ่อน input ไฟล์
+                            fileInput.onchange = (event) => {
+                                ImageLoad(event, imgElement.id, uploadIcon.id, i); // เรียกฟังก์ชัน ImageLoad เมื่อไฟล์ถูกเลือก
+                                optionsContainer.remove(); // Remove options after selecting
+                            };
+
+                            const fileButton = document.createElement('button');
+                            const fileIcon = document.createElement('img');
+                            // กำหนดไอคอนสำหรับการเลือกไฟล์
+                            fileIcon.src = '/image/icon/file.png';
+                            fileIcon.alt = "Choose File";
+                            fileIcon.className = "w-24 h-12 "; // กำหนดขนาดของไอคอนไฟล์
+                            fileButton.appendChild(fileIcon);
+                            fileButton.className = "px-1 py-1 rounded-full flex items-center transition duration-200 ease-in-out hover:bg-[#F0A8D0] w-16 h-16";
+                            // เมื่อคลิกที่ปุ่มไฟล์ จะเรียกไฟล์ input
+                            fileButton.onclick = () => {
+                                fileInput.click(); // เปิดหน้าต่างเลือกไฟล์
+                                optionsContainer.remove(); // Remove options after selecting
+                            };
+                            optionsContainer.appendChild(fileButton);
+
+                            // แนบตัวเลือกการอัปโหลดไปยัง imgContainer
+                            imgContainer.appendChild(optionsContainer);
+                        };
+
+                        // แนบ eventItem ไปยัง eventContainer
+                        eventContainer.appendChild(eventItem);
+                    }
+                    // เก็บจำนวนภาพที่อัปโหลดใน local storage
+                    localStorage.setItem(`uploadedImagesCount${currentWordIndex}`, uploadedImagesCount); // Store the uploaded images count
+                }
+
+                // Image Load Function
+                const ImageLoad = function (event, imageId, iconId, index) {
+                    const imageElement = document.getElementById(imageId); // รับ element ของภาพตาม ID
+                    const uploadIcon = document.getElementById(iconId); // รับ element ของไอคอนอัปโหลด
+
+                    // ตั้งค่าที่มาของภาพจากไฟล์ที่อัปโหลด
+                    imageElement.src = URL.createObjectURL(event.target.files[0]);
+                    imageElement.classList.remove('hidden'); // แสดงภาพที่อัปโหลด
+
+                    // ซ่อนไอคอนอัปโหลดเมื่อภาพถูกอัปโหลดสำเร็จ
+                    if (uploadIcon) {
+                        uploadIcon.classList.add('hidden'); // Hide the upload icon
+                    }
+
+                    // เพิ่มจำนวนภาพที่อัปโหลดและเก็บไว้ใน local storage
+                    uploadedImagesCount++;
+                    localStorage.setItem(`uploadedImagesCount${currentWordIndex}`, uploadedImagesCount);
+                };
+
+
+                // Array to hold captured image blobs
+                let capturedImages = []; // สร้างอาร์เรย์สำหรับเก็บภาพที่ถูกถ่าย
+
+                // Function to open the camera and capture an image
+                function openCamera(imageId, iconId = null) {
+                    const videoElement = document.createElement('video'); // สร้างอิลิเมนต์วิดีโอใหม่
+                    videoElement.id = 'cameraVideo'; // ตั้ง ID สำหรับการจัดรูปแบบ
+
+                    // Access camera using getUserMedia
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(stream => {
+                            videoElement.srcObject = stream; // เชื่อมต่อวิดีโอเข้ากับสตรีมจากกล้อง
+                            videoElement.play(); // เล่นวิดีโอ
+
+                            // Create container for video and button
+                            const cameraContainer = document.createElement('div'); // สร้างกล่องสำหรับวิดีโอและปุ่ม
+                            cameraContainer.className = "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] text-center"; // ตั้งค่าคลาสสำหรับการจัดรูปแบบด้วย Tailwind
+
+                            // Style for the video element
+                            videoElement.className = "w-[500px] h-auto rounded-[12px]"; // ตั้งค่าคลาสสำหรับการจัดรูปแบบวิดีโอ
+
+                            // Create capture button
+                            const captureButton = document.createElement('button'); // สร้างปุ่มสำหรับจับภาพ
+                            const cameraIcon = document.createElement('img'); // สร้างอิลิเมนต์ภาพสำหรับไอคอนกล้อง
+                            cameraIcon.src = '/image/icon/camera.png'; // ตั้งค่าที่อยู่ของไอคอน
+                            cameraIcon.alt = "Capture Image"; // ข้อความสำรองสำหรับภาพ
+                            cameraIcon.className = "w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"; // ตั้งค่าขนาดของไอคอน
+
+                            // Apply Tailwind classes for button styling
+                            captureButton.className = "hover:bg-[#F0A8D0] text-white text-2xl md:text-xl lg:text-2xl px-3 py-3 md:px-3 md:py-3 rounded-full transition duration-200 ease-in-out flex absolute left-1/2 transform -translate-x-1/2"; // ตั้งค่าคลาสสำหรับปุ่ม
+                            captureButton.style.bottom = '3vh'; // ตำแหน่งที่ด้านล่างของกล่อง
+
+                            // Append the camera icon to the button
+                            captureButton.appendChild(cameraIcon); // เพิ่มไอคอนกล้องเข้าไปในปุ่ม
+
+                            // Append video and button to the camera container
+                            cameraContainer.appendChild(videoElement); // เพิ่มวิดีโอเข้าไปในกล่อง
+                            cameraContainer.appendChild(captureButton); // เพิ่มปุ่มเข้าไปในกล่อง
+                            document.body.appendChild(cameraContainer); // เพิ่มกล่องเข้าไปในหน้าเว็บ
+
+                            // Button click event
+                            captureButton.onclick = () => {
+                                captureImage(imageId, videoElement); // เชื่อมปุ่มเข้ากับฟังก์ชันจับภาพ
+
+                                // Hide the upload icon when the image is captured
+                                if (iconId) {
+                                    const uploadIcon = document.getElementById(iconId); // ค้นหาไอคอนอัปโหลด
+                                    if (uploadIcon) {
+                                        uploadIcon.classList.add('hidden'); // ซ่อนไอคอนอัปโหลด
+                                    }
+                                }
+
+                                // Stop the camera stream after capturing
+                                stream.getTracks().forEach(track => track.stop()); // หยุดสตรีมจากกล้อง
+
+                                // Remove camera container after capturing
+                                document.body.removeChild(cameraContainer); // ลบกล่องกล้องออกจากหน้าเว็บหลังจากจับภาพ
+                            };
+                        })
+                        .catch(err => {
+                            console.error("Error accessing camera: " + err); // แสดงข้อผิดพลาดหากไม่สามารถเข้าถึงกล้อง
+                            alert("Unable to access the camera. Please check camera permissions."); // แสดงข้อความแจ้งเตือน
+                        });
+                }
+
+                // Capture image function
+                function captureImage(imageId, videoElement) {
+                    const canvas = document.createElement('canvas'); // สร้างอิลิเมนต์แคนวาสใหม่
+                    canvas.width = videoElement.videoWidth; // ตั้งค่าความกว้างของแคนวาส
+                    canvas.height = videoElement.videoHeight; // ตั้งค่าความสูงของแคนวาส
+                    const context = canvas.getContext('2d'); // รับคอนเท็กซ์ 2D ของแคนวาส
+                    context.drawImage(videoElement, 0, 0, canvas.width, canvas.height); // วาดเฟรมวิดีโอลงในแคนวาส
+
+                    // Convert canvas content to a Blob in JPEG format
+                    canvas.toBlob(blob => {
+                        if (!blob) {
+                            console.error('Failed to create blob from canvas'); // แสดงข้อผิดพลาดหากไม่สามารถสร้าง blob
+                            closeCamera(); // ปิดกล้องแม้จะเกิดข้อผิดพลาดในการสร้าง blob
+                            return;
+                        }
+
+                        // Add the blob to the captured images array
+                        capturedImages.push(blob); // เพิ่ม blob ลงในอาร์เรย์ภาพที่ถูกจับ
+
+                        // Optionally display the captured image
+                        const imageElement = document.getElementById(imageId); // ค้นหาอิลิเมนต์ภาพ
+                        imageElement.src = URL.createObjectURL(blob); // แสดงภาพที่ถูกจับ
+                        imageElement.classList.remove('hidden'); // แสดงภาพ
+
+                        // Increment the uploaded images count
+                        let uploadedImagesCount = parseInt(localStorage.getItem(`uploadedImagesCount${currentWordIndex}`)) || 0; // รับค่าจำนวนภาพที่อัปโหลดจาก localStorage
+                        uploadedImagesCount += 1; // เพิ่มจำนวนภาพที่อัปโหลด
+                        localStorage.setItem(`uploadedImagesCount${currentWordIndex}`, uploadedImagesCount); // บันทึกจำนวนภาพที่อัปโหลด
+
+                        // Send captured images to the backend
+                        sendCapturedImages(blob); // ส่ง blob ปัจจุบันไปยัง backend
+
+                        // Hide or remove the capture button after capturing
+                        const captureButton = document.querySelector('button'); // ค้นหาปุ่มจับภาพ
+                        if (captureButton) {
+                            captureButton.style.display = 'none'; // ซ่อนปุ่ม
+                            // หรือ captureButton.classList.add('transparent-background'); เพื่อเปลี่ยนพื้นหลัง
+                        }
+
+                        // Close the camera after capturing the image
+                        closeCamera(); // ปิดกล้องหลังจากจับภาพ
+                    }, 'image/jpeg'); // ระบุรูปแบบเป็น JPEG
+                }
+
+                // Function to send captured images to the backend
+                function sendCapturedImages(blob) {
+                    const formData = new FormData(); // สร้างออบเจ็กต์ FormData ใหม่
+                    formData.append('files', blob, `captured-image.jpg`); // เพิ่ม blob ที่ถูกจับเข้าไปใน FormData
+
+                    // Send the data to the server
+                    fetch('http://localhost:8000/upload', {
+                        method: 'POST', // ตั้งค่า HTTP method เป็น POST
+                        body: formData, // ตั้งค่า body เป็น FormData
+                    })
+                        .then(response => response.json()) // แปลงการตอบกลับเป็น JSON
+                        .then(data => {
+                            // Handle server response
+                            console.log('Upload success:', data); // แสดงผลสำเร็จในการอัปโหลด
+                        })
+                        .catch(error => {
+                            console.error('Error during upload:', error); // แสดงข้อผิดพลาดหากเกิดข้อผิดพลาดในการอัปโหลด
+                        });
+                }
+
+                // Function to close the camera
+                function closeCamera() {
+                    const videoElement = document.getElementById('cameraVideo'); // ค้นหาอิลิเมนต์วิดีโอ
+                    if (videoElement) {
+                        const stream = videoElement.srcObject; // รับสตรีมจากวิดีโอ
+                        if (stream) {
+                            const tracks = stream.getTracks(); // รับแทร็กจากสตรีม
+                            tracks.forEach(track => track.stop()); // หยุดแทร็กวิดีโอทั้งหมด
+                        }
+                        videoElement.srcObject = null; // ลบสตรีมวิดีโอ
+                        videoElement.style.display = 'none'; // ซ่อนอิลิเมนต์วิดีโอ
+                        videoElement.remove(); // ลบอิลิเมนต์วิดีโอออกจาก DOM ถ้าจำเป็น
+                    }
+                }
+
+
+                // ฟังก์ชันสำหรับโหลดไฟล์ภาพที่ถูกอัปโหลด
+                function loadFile(event, imageId, iconId) {
+                    const imgElement = document.getElementById(imageId); // ดึงอีลิเมนต์ภาพจาก ID
+                    const file = event.target.files[0]; // ดึงไฟล์ที่อัปโหลด
+                    const formData = new FormData(); // สร้าง FormData เพื่อส่งข้อมูล
+
+                    if (file) {
+                        formData.append('files', file); 
+
+                        // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+                        fetch('http://localhost:8000/upload', { // ปรับ URL ตามที่เซิร์ฟเวอร์ของคุณใช้งาน
+                            method: 'POST', // ใช้วิธี POST ในการส่งข้อมูล
+                            body: formData, // ส่ง FormData ที่สร้างขึ้น
+                        })
+                            .then(response => {
+                                // แสดงภาพที่อัปโหลดทันที
+                                imgElement.src = URL.createObjectURL(file); // แสดงภาพที่อัปโหลด
+                                imgElement.classList.remove('hidden'); // แสดงภาพ
+
+                                if (!response.ok) {
+                                    return response.json().then(errorData => {
+                                        throw new Error(`Network response was not ok: ${JSON.stringify(errorData)}`); // ตรวจสอบสถานะของการตอบกลับ
+                                    });
+                                }
+                                return response.json(); // คืนค่าผลลัพธ์จากเซิร์ฟเวอร์
+                            })
+                            .then(data => {
+                                // จัดการกับข้อมูลที่ได้จากเซิร์ฟเวอร์
+                                console.log('Success:', data);
+                                imgElement.src = URL.createObjectURL(file); // แสดงภาพที่อัปโหลด
+                                imgElement.classList.remove('hidden'); // แสดงภาพ
+
+                                // เพิ่มจำนวนภาพที่อัปโหลด
+                                let uploadedImagesCount = parseInt(localStorage.getItem(`uploadedImagesCount${currentWordIndex}`)) || 0; // ดึงจำนวนภาพที่อัปโหลด
+                                uploadedImagesCount += 1; // เพิ่มจำนวนภาพที่อัปโหลด
+                                localStorage.setItem(`uploadedImagesCount${currentWordIndex}`, uploadedImagesCount); // บันทึกจำนวนภาพที่อัปโหลด
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error); // แสดงข้อผิดพลาดในกรณีที่เกิดขึ้น
+                            });
+                    }
+                }
+
+                // ฟังก์ชันสำหรับส่งภาพทั้งหมดไปยังเซิร์ฟเวอร์
+                function sendImages() {
+                    const formData = new FormData(); // สร้าง FormData ใหม่
+                    const imageElements = document.querySelectorAll('[id^="eventPoster"]'); // ดึงรูปที่มี id ขึ้นต้นด้วย "eventPoster"
+                    console.log('Image Elements:', imageElements); // ตรวจสอบค่า
+
+                    // สร้าง Promise สำหรับการดึง blob จากแต่ละภาพ
+                    const imagePromises = Array.from(imageElements).map((imgElement, index) => {
+                        if (imgElement.src && imgElement.src.startsWith('blob:')) {  // ตรวจสอบว่าภาพมี src ที่เป็น blob
+                            return fetch(imgElement.src) // ดึง blob จาก src
+                                .then(res => {
+                                    if (!res.ok) {
+                                        throw new Error('Failed to convert blob to blob');  // ตรวจสอบผลลัพธ์จาก fetch
+                                    }
+                                    return res.blob().then(blob => {
+                                        formData.append('files', blob, `image${index}.png`);  // เพิ่มไฟล์ภาพเข้าไปใน FormData
+                                        console.log(`File added to formData: image${index}.png`);
+                                    });
+                                })
+                                .catch(error => {
+                                    console.error('Error converting blob:', error);  // จับข้อผิดพลาดจากการดึง blob
+                                    throw error;  // แจ้งให้ Promise ทราบว่าเกิดข้อผิดพลาด
+                                });
+                        } else if (imgElement.src && imgElement.src.startsWith('data:')) {  // ตรวจสอบว่าภาพอาจเป็น base64 data URL (เช่นจากอุปกรณ์)
+                            // แปลง base64 data URL เป็น blob
+                            const base64Data = imgElement.src.split(',')[1]; // แยก base64 ออกจาก data URL
+                            const contentType = imgElement.src.split(';')[0].split(':')[1]; // ดึง content type จาก data URL
+                            const byteCharacters = atob(base64Data); // Decode base64 string
+                            const byteNumbers = new Array(byteCharacters.length);
+                            for (let i = 0; i < byteCharacters.length; i++) {
+                                byteNumbers[i] = byteCharacters.charCodeAt(i); // แปลงตัวอักษรเป็นโค้ด ASCII
+                            }
+                            const byteArray = new Uint8Array(byteNumbers); // สร้าง Uint8Array จาก byteNumbers
+                            const blob = new Blob([byteArray], { type: contentType }); // สร้าง blob จาก byteArray
+
+                            formData.append('files', blob, `image${index}.png`);  // เพิ่มไฟล์ภาพเข้าไปใน FormData
+                            console.log(`Base64 image added to formData: image${index}.png`);
+                            return Promise.resolve();  // ดำเนินการต่อได้เลย ไม่ต้องรอ Promise
+                        } else {
+                            console.error('Image source is not a blob or base64 format:', imgElement.src);  // ตรวจสอบกรณีที่ src ไม่ใช่ blob หรือ base64
+                            return Promise.resolve(); // คืนค่า Promise ที่สำเร็จในกรณีนี้
+                        }
+                    });
+
+                    // รอให้ Promise ทั้งหมดเสร็จสิ้น
+                    Promise.all(imagePromises)
+                        .then(() => {
+                            formData.append('word', words[currentWordIndex]);  // เพิ่มโจทย์เข้าไปใน FormData
+                            const files = formData.getAll('files');
+                            console.log('FormData contents before sending:', files); // แสดงข้อมูลใน FormData ก่อนส่ง
+
+                            if (files.length > 0) { // ตรวจสอบว่ามีไฟล์ใน FormData หรือไม่
+                                return fetch('http://localhost:8000/upload', { // ส่งข้อมูลไปยังเซิร์ฟเวอร์
+                                    method: 'POST',
+                                    body: formData
+                                });
+                            } else {
+                                throw new Error('No files added to FormData'); // แจ้งข้อผิดพลาดถ้าไม่มีไฟล์
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) { // ตรวจสอบผลลัพธ์จากเซิร์ฟเวอร์
+                                return response.json().then(errorData => {
+                                    console.error('Error response from server:', errorData); 
+                                    throw new Error(`Network response was not ok: ${JSON.stringify(errorData)}`); 
+                                });
+                            }
+                            return response.json(); // คืนค่าผลลัพธ์จากเซิร์ฟเวอร์
+                        })
+                        .then(data => {
+                            console.log('Success:', data);
+
+                            // เคลียร์ผลลัพธ์เก่าก่อนอัปเดตด้วยผลลัพธ์ใหม่
+                            const resultElement = document.getElementById('result');
+                            resultElement.textContent = ''; // เคลียร์ผลลัพธ์ก่อนหน้า
+
+                            const predictionElement = document.getElementById('predictions');
+                            predictionElement.textContent = ''; // เคลียร์การคาดการณ์ก่อนหน้า
+
+                            // อัปเดตอีลิเมนต์ด้วยผลลัพธ์ใหม่
+                            resultElement.textContent = `${data.result}`; // แสดงผลลัพธ์จากเซิร์ฟเวอร์
+                            predictionElement.textContent = `YOUR ANSWER : ${data.predictions.join(', ')}`; // แสดงการคาดการณ์
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            const resultElement = document.getElementById('result');
+                            resultElement.textContent = error.message || 'Error occurred during upload'; // แสดงข้อความข้อผิดพลาดที่ชัดเจน
+                        });
+                }
+
+
+
+                // ฟังก์ชันที่ใช้ในการหาค่า task_id ของคำปัจจุบัน
+                function getTaskIdForCurrentWord() {
+                    const currentWord = words[currentWordIndex]; // คำปัจจุบัน
+                    // หาค่า task_id ตามคำที่อยู่ในตัวแปร `tasks`
+                    const taskId = tasks[currentWord];
+                    return taskId;
+                }
+
+                // ซ่อนผลลัพธ์ในตอนเริ่มต้น
+                function hideResults() {
+                    const resultDisplay = document.getElementById('resultDisplay');
+                    resultDisplay.classList.add('hidden'); // ซ่อน div
+                    document.getElementById('correctAttempts').textContent = '';
+                    document.getElementById('totalAttempts').textContent = '';
+                    document.getElementById('percentageCorrect').textContent = '';
+                }
+
+                // ฟังก์ชันที่ใช้ในการส่งภาพ
+                document.getElementById('sendButton').onclick = async function () {
+                    // เรียกใช้ฟังก์ชันส่งภาพไปยัง API
+                    await sendImages();
+
+                    // หาค่า task_id สำหรับคำปัจจุบัน
+                    const taskId = getTaskIdForCurrentWord();
+
+                    // เรียกฟังก์ชันเพื่อดึงผลลัพธ์ของ task
+                    await fetchTaskResult(taskId);
+                };
+
+                // ฟังก์ชันเพื่อดึงผลลัพธ์ของ task
+                async function fetchTaskResult(taskId) {
+                    try {
+                        const response = await fetch(`http://127.0.0.1:8000/task/${taskId}/result`);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+
+                        const result = await response.json();
+
+                        // อัปเดตค่าผลลัพธ์ในหน้าเว็บ
+                        document.getElementById('correctAttempts').textContent = result.correct_attempts;
+                        document.getElementById('totalAttempts').textContent = result.total_attempts;
+                        document.getElementById('percentageCorrect').textContent = result.percentage_correct.toFixed(2) + '%';
+
+                        // แสดงผลลัพธ์
+                        const resultDisplay = document.getElementById('resultDisplay');
+                        resultDisplay.classList.remove('hidden'); // แสดง div
+                    } catch (error) {
+                        console.error('Error fetching task result:', error);
+                    }
+                }
+
+                // Initial display of the first word
+                window.onload = function () {
+                    currentWordIndex = 0; // รีเซ็ตไปยังคำแรก
+                    uploadedImagesCount = 0; // รีเซ็ตตัวนับภาพที่อัปโหลด
+                    displayWord(); // แสดงคำแรก
+
+                    // ซ่อนผลลัพธ์ในตอนเริ่มต้น
+                    hideResults();
+                };
+
+                // Function to go to the next word without uploading images
+                document.getElementById('nextButton').onclick = function () {
+                    // ซ่อนผลลัพธ์เมื่อไปยังข้อถัดไป
+                    hideResults();
+
+                    // เรียกใช้ฟังก์ชัน goToNextWord
+                    goToNextWord();
+                };
+
+                // Function to go to the next word
+                function goToNextWord() {
+                    // Increment the current word index
+                    currentWordIndex++; // เพิ่มดัชนีคำปัจจุบัน
+
+                    // Check if the index is out of bounds
+                    if (currentWordIndex >= words.length) { // ตรวจสอบว่าดัชนีออกนอกขอบเขตหรือไม่
+                        // แสดงการแจ้งเตือน Complete และซ่อนปุ่ม NEXT
+                        document.getElementById('completeNotification').classList.remove('hidden'); // แสดงการแจ้งเตือน
+                        document.getElementById('nextButton').classList.add('hidden'); // ซ่อนปุ่ม NEXT
+
+                    }
+
+                    // Reset the uploaded images count for the new word
+                    uploadedImagesCount = 0; // รีเซ็ตจำนวนภาพที่อัปโหลดสำหรับคำใหม่
+                    localStorage.setItem(`uploadedImagesCount${currentWordIndex}`, uploadedImagesCount); // รีเซ็ตตัวนับใน local storage
+
+                    // Display the next word
+                    displayWord(); // แสดงคำถัดไป
+
+                    // Clear the result message while keeping "YOUR ANSWER :"
+                    const resultElement = document.getElementById('result'); // ดึงอิลิเมนต์ผลลัพธ์
+                    resultElement.textContent = "Waiting for result..."; // รีเซ็ตข้อความผลลัพธ์
+
+                    // Optionally, you can also keep the predictions element as it is
+                    const predictionElement = document.getElementById('predictions'); // ดึงอิลิเมนต์การทำนาย
+                    predictionElement.textContent = "YOUR ANSWER :"; // รักษาข้อความ "YOUR ANSWER :" ให้คงอยู่
+                }
+
+                // Function to proceed to the next word after upload
+                function proceedToNextWord() {
+                    goToNextWord(); // เรียกฟังก์ชันเพื่อไปยังคำถัดไป
+                }
+
+                // Function to close the notification and go back to index.html when clicking the background
+                document.getElementById('completeNotification').onclick = function (event) {
+                    if (event.target.id === 'completeNotification') { // ตรวจสอบว่าคลิกที่พื้นหลังของการแจ้งเตือน
+                        window.location.href = 'index.html'; // เปลี่ยนเส้นทางไปยัง index.html
+                    }
+                };
+
+            </script>
+    </body>
+
+</html>

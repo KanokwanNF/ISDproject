@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>PopUp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .custom-font {
+            font-family: "Montserrat", sans-serif !important;
+        }
+
+        * {
+            font-family: "Montserrat", sans-serif !important;
+        }
+    </style>
+</head>
+<body class="relative">
+    <div class="w-full flex flex-col">
+        <!-- พื้นหลังของหน้าเว็บ -->
+        <div class="flex w-full justify-center items-center min-h-screen">
+            <div class="flex h-full w-full justify-center items-center py-28 md:py-16">
+                <div
+                    class="bg-[#F9F2EE] relative Z-50 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 w-full max-w-[60vw] md:max-w-[50vw] lg:max-w-[800px] h-auto md:h-auto lg:h-[514px] flex border rounded-xl overflow-hidden relative shadow-lg ">
+
+                    <!-- ปุ่มปิดหน้าต่าง เพื่อกลับหน้าหลัก -->
+                    <a href="index.html" onclick="navigateHome(event)"
+                        class="absolute top-4 right-4 p-2 bg-transparent hover:bg-gray-200 rounded-full focus:outline-none transition-all duration-300 z-50">
+                        <img src="/image/icon/close.png" alt="Close" class="w-4 h-4 md:w-4 md:h-4 lg:w-6 lg:h-6">
+                    </a>
+
+                    <!-- ไอคอนและข้อความที่จะถูกอัปเดตโดยอัตโนมัติ ขึ้นอยู่กับผู้ใช้เลือกกด -->
+                    <div id="iconText"
+                        class="absolute top-4 left-4 md:left-6 md:top-4 md:flex md:items-center space-x-2 md:justify-start justify-center w-full md:w-auto">
+                        <img id="popupImage" src="" alt="Alphabet Icon"
+                            class="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16">
+                        <p id="popupText" class="text-lg md:text-xl lg:text-2xl xl:text-3xl font-basic"
+                            style="font-family: 'Montserrat', sans-serif;"></p>
+                    </div>
+
+                    <!-- เนื้อหาภายในหน้าต่าง popup -->
+                    <div class="flex flex-col items-center justify-center w-full p-4 md:p-6 lg:p-8 text-center"
+                        style="letter-spacing: 1.5px;" style="font-family: 'Montserrat', sans-serif;">
+                        <!-- รูปภาพแสดงสัญลักษณ์มือ -->
+                        <img id="signImage" src="" alt="Hand Sign Image"
+                            class="w-[100px] h-auto md:w-[220px] md:h-auto lg:w-[250px] lg:h-auto mt-20 md:mt-16 lg:mt-20 mb-4">
+
+                        <!-- ข้อความอธิบายลักษณะมือ-->
+                        <p id="instruction1" class="text-base text-sm md:text-lg lg:text-xl mt-2"></p>
+                        <p id="instruction2" class="text-base text-sm md:text-lg lg:text-xl mt-2"></p>
+                        <p id="instruction3" class="text-base text-sm md:text-lg lg:text-xl mt-2"></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ปุ่มซ้ายสำหรับย้อนกลับ -->
+        <div class="flex items-center absolute left-20 h-full">
+            <img src="/image/icon/back.png" alt="Previous" onclick="changeContent('prev')"
+                class="w-12 h-12 md:w-16 md:h-16 lg:w-28 lg:h-28 cursor-pointer rounded-full hover:bg-gray-200 focus:outline-none transition-all duration-300">
+        </div>
+
+        <!-- ปุ่มขวาสำหรับไปหน้าถัดไป -->
+        <div class="flex items-center absolute right-20 h-full">
+            <img src="/image/icon/next.png" alt="Next" onclick="changeContent('next')"
+                class="w-12 h-12 md:w-16 md:h-16  lg:w-28 lg:h-28 cursor-pointer rounded-full hover:bg-gray-200 focus:outline-none transition-all duration-300">
+        </div>
+    </div>
+
+    <!-- การเพิ่มรูปในพื้นหลังเพื่อตกแต่ง -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        <img src="/image/bg/flower_red.png" alt="P" class="absolute"
+            style="z-index: 0; top: 5%; left: 5%; transform: rotate(30deg); width: 48px; height: auto;">
+        <img src="/image/bg/flower_or.png " alt="P" class="absolute"
+            style="z-index: 0; bottom: 5%; left: 25%; transform: rotate(30deg); width: 16px; height: auto;">
+        <img src="/image/bg/flower_r.png" alt="P" class="absolute"
+            style="z-index: 0; top: 1%; right: 3%; transform: rotate(-30deg); width: 36px; height: auto;">
+        <img src="/image/bg/flower_gb.png" alt="P" class="absolute"
+            style="z-index: 0; top: 38%; left: 8%; transform: rotate(-30deg); width: 16px; height: auto;">
+        <img src="/image/bg/flower_green.png" alt="P" class="absolute"
+            style="z-index: 0; top: 10%; left: 60%; transform: rotate(-30deg); width: 16px; height: auto;">
+        <img src="/image/bg/flower_green.png" alt="P" class="absolute"
+            style="z-index: 0; bottom: 30%; left: 5%; transform: rotate(-30deg); width: 36px; height: auto;">
+        <img src="/image/bg/flower_red.png" alt="P" class="absolute "
+            style="z-index: 0; bottom: 40%; right: 15%; transform: rotate(-30deg); width: 24px; height: auto;">
+        <img src="/image/bg/flower_gb.png" alt="P" class="absolute"
+            style="z-index: 0; bottom: 20%; right: 5%; transform: rotate(-30deg); width: 48px; height: auto;">
+        <img src="/image/bg/flower_blue.png" alt="P" class="absolute"
+            style="z-index: 0; bottom: 5%; right: 5%; transform: rotate(30deg); width: 16px; height: auto;">
+    </div>
+</body>
+<script>
+    // อาเรย์ที่เก็บข้อมูลของตัวอักษรทั้ง 26 ตัว 
+    // ภาพสัญลักษณ์มือ, และคำแนะนำเกี่ยวกับวิธีทำท่าทางมือ
+    const alphabetData = [
+        { letter: 'A', word: 'Apple', imageSrc: '/image/alphabet/A.png', signImage: '/image/sign/A.png', instruction1: 'Make a fist with your thumb', instruction2: 'resting on the side of your fist,', instruction3: 'not tucked in.' },
+        { letter: 'B', word: 'Boy', imageSrc: '/image/alphabet/B.png', signImage: '/image/sign/B.png', instruction1: 'Hold your palm out with fingers straight', instruction2: 'and together, while keeping ', instruction3: 'your thumb across your palm.' },
+        { letter: 'C', word: 'Cat', imageSrc: '/image/alphabet/C.png', signImage: '/image/sign/C.png', instruction1: 'Curl your hand into the shape of', instruction2: 'the letter C with your fingers and thumb.', instruction3: '' },
+        { letter: 'D', word: 'Dog', imageSrc: '/image/alphabet/D.png', signImage: '/image/sign/D.png', instruction1: 'Touch your thumb and middle finger together', instruction2: 'while your index finger points straight up,', instruction3: 'and other fingers curl down.' },
+        { letter: 'E', word: 'Elephant', imageSrc: '/image/alphabet/E.png', signImage: '/image/sign/E.png', instruction1: 'Curl all your fingers toward your palm', instruction2: 'with your thumb resting on top of your fingers.', instruction3: '' },
+        { letter: 'F', word: 'Fish', imageSrc: '/image/alphabet/F.png', signImage: '/image/sign/F.png', instruction1: 'Touch the tips of your thumb', instruction2: ' and index finger to form a circle,', instruction3: 'while the other three fingers point up.' },
+        { letter: 'G', word: 'Grapes', imageSrc: '/image/alphabet/G.png', signImage: '/image/sign/G.png', instruction1: 'Hold your index finger and thumb parallel,', instruction2: 'as if you are pinching something,', instruction3: 'while the rest of your fingers are curled in.' },
+        { letter: 'H', word: 'House', imageSrc: '/image/alphabet/H.png', signImage: '/image/sign/H.png', instruction1: 'Hold your index and middle fingers together,', instruction2: 'pointing forward, with the other', instruction3: 'fingers curled in.' },
+        { letter: 'I', word: 'Ice cream', imageSrc: '/image/alphabet/I.png', signImage: '/image/sign/I.png', instruction1: 'Extend just your pinky finger', instruction2: 'while the rest are curled into your palm.', instruction3: '' },
+        { letter: 'J', word: 'Jar', imageSrc: '/image/alphabet/J.png', signImage: '/image/sign/J.png', instruction1: 'Start with the "I" shape and draw a "J" shape', instruction2: 'in the air with your pinky.', instruction3: '' },
+        { letter: 'K', word: 'Kite', imageSrc: '/image/alphabet/K.png', signImage: '/image/sign/K.png', instruction1: 'Hold your middle and index fingers up', instruction2: 'in a "V" shape while your thumb touches', instruction3: 'the middle finger.' },
+        { letter: 'L', word: 'Lollipop', imageSrc: '/image/alphabet/L.png', signImage: '/image/sign/L.png', instruction1: 'Form an "L" shape with your thumb and index finger,', instruction2: 'while the other fingers are curled into the palm.', instruction3: '' },
+        { letter: 'M', word: 'Mango', imageSrc: '/image/alphabet/M.png', signImage: '/image/sign/M.png', instruction1: 'Tuck your thumb under your first three fingers,', instruction2: 'making the thumb peek between your ring', instruction3: 'and pinky fingers.' },
+        { letter: 'N', word: 'Noodles', imageSrc: '/image/alphabet/N.png', signImage: '/image/sign/N.png', instruction1: 'Tuck your thumb under the first two fingers,', instruction2: 'so it peeks between your middle and ring fingers.', instruction3: '' },
+        { letter: 'O', word: 'Orange', imageSrc: '/image/alphabet/O.png', signImage: '/image/sign/O.png', instruction1: 'Make an "O" shape by touching the tips', instruction2: 'of your fingers and thumb together.', instruction3: '' },
+        { letter: 'P', word: 'Pineapple', imageSrc: '/image/alphabet/P.png', signImage: '/image/sign/P.png', instruction1: 'Start with a "K" shape, then tilt', instruction2: 'your hand downward.', instruction3: '' },
+        { letter: 'Q', word: 'Quail', imageSrc: '/image/alphabet/Q.png', signImage: '/image/sign/Q.png', instruction1: 'Similar to "G", but point your hand downward.', instruction2: '', instruction3: '' },
+        { letter: 'R', word: 'Rainbow', imageSrc: '/image/alphabet/R.png', signImage: '/image/sign/R.png', instruction1: 'Cross your index and middle fingers,', instruction2: 'while the other fingers are curled in', instruction3: '' },
+        { letter: 'S', word: 'Strawberry', imageSrc: '/image/alphabet/S.png', signImage: '/image/sign/S.png', instruction1: 'Make a fist, with your thumb tucked across', instruction2: 'the front of your fingers.', instruction3: '' },
+        { letter: 'T', word: 'Train', imageSrc: '/image/alphabet/T.png', signImage: '/image/sign/T.png', instruction1: 'Tuck your thumb between your index', instruction2: 'and middle fingers.', instruction3: '' },
+        { letter: 'U', word: 'Umbrella', imageSrc: '/image/alphabet/U.png', signImage: '/image/sign/U.png', instruction1: 'Hold your index and middle fingers up', instruction2: 'together, side by side.', instruction3: '' },
+        { letter: 'V', word: 'Vegetable', imageSrc: '/image/alphabet/V.png', signImage: '/image/sign/V.png', instruction1: 'Spread your index and middle fingers', instruction2: 'into a "V" shape.', instruction3: '' },
+        { letter: 'W', word: 'Watermelon', imageSrc: '/image/alphabet/W.png', signImage: '/image/sign/W.png', instruction1: 'Hold up three fingers (index, middle, and ring)', instruction2: 'in a "W" shape.', instruction3: '' },
+        { letter: 'X', word: 'X ray', imageSrc: '/image/alphabet/X.png', signImage: '/image/sign/X.png', instruction1: 'Curl your index finger like a hook,', instruction2: 'while the other fingers are tucked', instruction3: 'into the palm.' },
+        { letter: 'Y', word: 'Yoyo', imageSrc: '/image/alphabet/Y.png', signImage: '/image/sign/Y.png', instruction1: 'Extend your thumb and pinky,', instruction2: 'while the other fingers are tucked in, ', instruction3: 'forming a "Y" shape.' },
+        { letter: 'Z', word: 'Zebra', imageSrc: '/image/alphabet/Z.png', signImage: '/image/sign/Z.png', instruction1: 'Trace the letter "Z" in the air', instruction2: 'with your index finger.', instruction3: '' },
+    ];
+
+    let currentIndex = 0; // ตัวแปรเก็บดัชนีปัจจุบันของตัวอักษรที่แสดง
+
+    // ฟังก์ชันสำหรับดึงพารามิเตอร์ (เช่น letter) จาก URL 
+    // เพื่อใช้ระบุตัวอักษรที่ต้องการแสดงผล
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const results = regex.exec(location.search); // ดึงค่าจาก query string ของ URL
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' ')); // คืนค่าที่ได้จากพารามิเตอร์หรือเป็นค่าว่าง
+    }
+
+    // ฟังก์ชันสำหรับอัปเดตเนื้อหาในหน้าเว็บตามตัวอักษรที่เลือก
+    function updateContent(index) {
+        const content = alphabetData[index]; // ดึงข้อมูลของตัวอักษรจากอาเรย์ตามดัชนีที่ระบุ
+        document.getElementById('popupText').textContent = `${content.letter} - ${content.word}`; // อัปเดตข้อความตัวอักษรและคำศัพท์
+        document.getElementById('popupImage').src = content.imageSrc; // อัปเดตรูปภาพตัวอักษร
+        document.getElementById('signImage').src = content.signImage; // อัปเดตรูปภาพสัญลักษณ์มือ
+        document.getElementById('instruction1').textContent = content.instruction1; // อัปเดตคำแนะนำข้อ 1
+        document.getElementById('instruction2').textContent = content.instruction2; // อัปเดตคำแนะนำข้อ 2
+        document.getElementById('instruction3').textContent = content.instruction3; // อัปเดตคำแนะนำข้อ 3
+    }
+
+    // ฟังก์ชันสำหรับโหลดข้อมูลของตัวอักษรตามที่ระบุจาก URL
+    function loadLetterData() {
+        const letter = getUrlParameter('letter').toUpperCase(); // ดึงตัวอักษรจาก URL แล้วแปลงเป็นตัวพิมพ์ใหญ่
+        const data = alphabetData.find(item => item.letter === letter); // ค้นหาข้อมูลตัวอักษรในอาเรย์ที่ตรงกับตัวอักษรจาก URL
+
+        if (data) {
+            currentIndex = alphabetData.indexOf(data); // เก็บดัชนีปัจจุบันของตัวอักษร
+            updateContent(currentIndex); // อัปเดตเนื้อหาตามตัวอักษรที่เจอ
+        } else {
+            document.getElementById('popupText').textContent = 'ไม่พบตัวอักษรที่ระบุ'; // แสดงข้อความเมื่อไม่พบตัวอักษรที่ตรงกัน
+        }
+    }
+
+    // ฟังก์ชันสำหรับเปลี่ยนเนื้อหาเมื่อคลิกปุ่มถัดไปหรือย้อนกลับ
+    function changeContent(direction) {
+        if (direction === 'prev') {
+            // ถ้าเป็นปุ่มย้อนกลับและอยู่ที่ตัวอักษรแรก จะกลับไปที่ตัวสุดท้าย
+            currentIndex = (currentIndex === 0) ? alphabetData.length - 1 : currentIndex - 1;
+        } else if (direction === 'next') {
+            // ถ้าเป็นปุ่มถัดไปและอยู่ที่ตัวอักษรสุดท้าย จะกลับไปที่ตัวแรก
+            currentIndex = (currentIndex === alphabetData.length - 1) ? 0 : currentIndex + 1;
+        }
+        updateContent(currentIndex); // อัปเดตเนื้อหาตามดัชนีใหม่
+    }
+
+    // ฟังก์ชันสำหรับนำทางกลับไปที่หน้าแรก
+    function navigateHome(event) {
+        window.location.replace('index.html'); // เปลี่ยนเส้นทางไปที่หน้า index.html โดยไม่เปลี่ยนตำแหน่งการเลื่อนของหน้า
+    }
+
+    // เริ่มการทำงานเมื่อเอกสารถูกโหลดเสร็จสมบูรณ์
+    document.addEventListener("DOMContentLoaded", function () {
+        if (getUrlParameter('letter')) {
+            loadLetterData(); // ถ้ามีพารามิเตอร์ตัวอักษรใน URL ให้โหลดข้อมูลตัวอักษรนั้น
+        } else {
+            updateContent(currentIndex); // ถ้าไม่มี ให้แสดงตัวอักษรแรกในอาเรย์
+        }
+    });
+</script>
+</body>
+
+</html>

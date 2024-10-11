@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AboutUs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: "Montserrat", system-ui;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="relative">
+        <!-- Navigation bar -->
+        <nav id="navbar"
+            class="fixed top-4 left-0 right-0 max-w-[90%] z-20 px-4 mx-auto rounded-3xl transition-all duration-300 bg-[#9EDDFF]">
+            <div class="w-full">
+                <div class="text-xl items-center flex justify-between w-full text-black h-16 px-4">
+                    <div class="h-full flex items-center">
+                        <img class="h-10" src="/image/icon/logo.png" alt="logo">
+                    </div>
+                    <div class="hidden md:flex gap-16 items-center">
+                        <a class="text-black" href="index.html">HOME</a>
+                        <a class="text-black" href="letstest.html">LET’S TEST</a>
+                    </div>
+                    <div class="block md:hidden">
+                        <button id="menu-toggle" class="focus:outline-none">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-2 mt-4 px-4">
+                    <a class="text-black py-2" href="index.html">HOME</a>
+                    <a class="text-black py-2" href="letstest.html">LET’S TEST</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Script for mobile menu toggle -->
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+            let lastScrollTop = 0;
+
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    navbar.style.transform = `translateY(-${navbar.offsetHeight + 16}px)`; // 16px corresponds to top-4
+                } else {
+                    navbar.style.transform = "translateY(0)";
+                }
+                lastScrollTop = scrollTop;
+            });
+        </script>
+
+
+        <!-- Introducing Sign-Lish Section -->
+        <div>
+            <section class="max-w-7xl mx-auto text-center mt-24 sm:mt-36 lg:mt-48 px-4 sm:px-8">
+                <div class="flex flex-col md:flex-row items-center justify-center">
+                    <!-- Image Section -->
+                    <div class="flex-1 flex justify-center items-center mb-6 sm:mb-8 md:mb-0 md:mr-8">
+                        <img src="/image/icon/hand.png" alt="Person signing"
+                            class="h-48 w-48 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-112 xl:h-112">
+                    </div>
+
+                    <!-- Text Section -->
+                    <div class="flex-1 text-left relative z-10">
+                        <p class="text-xl sm:text-2xl lg:text-2xl font-bold mb-6 px-6 lg:mb-8"
+                            style="letter-spacing: 2px;">
+                            Introducing Sign-Lish, Our website is designed to help you master the basics of American
+                            Sign
+                            Language (ASL), starting with the alphabet!
+                        </p>
+                        <p class="text-lg sm:text-base lg:text-xl mb-6 px-6" style="letter-spacing: 2px;">
+                            With Sign-Lish, you'll learn how to express each letter using clear and interactive
+                            tutorials.
+                            It's the perfect starting point for anyone interested in communicating through ASL.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <img src="/image/bg/flower_red.png" alt="P" class="absolute"
+                style="top: 0%; left: 5%; transform: rotate(-30deg); width: 36px; height: auto;">
+            <span class="absolute text-[40px] sm:text-[56px] md:text-[56px] font-bold text-[#B2DEEC]"
+                style="top: 20%; left: 10%; transform: rotate(10deg);">J</span>
+            <img src="/image/bg/flower_red.png" alt="E" class="absolute"
+                style="bottom: 15%; left: 10%; transform: rotate(10deg); width: 20px; height: auto;">
+            <img src="/image/bg/flower_green.png" alt="R" class="absolute"
+                style="bottom: 8%; left: 35%; transform: rotate(20deg); width: 40px; height: auto;">
+            <img src="/image/bg/flower_green.png" alt="Z" class="absolute"
+                style="top: 20%; left: 30%; transform: rotate(20deg); width: 28px; height: auto;">
+            <span class="absolute text-[40px] sm:text-[56px] md:text-[56px] font-bold text-[#F875AA]"
+                style="top: 2%; right: 15%; transform: rotate(-30deg);">M</span>
+            <img src="/image/bg/flower_red.png" alt="Y" class="absolute"
+                style="top: 40%; right: 5%; transform: rotate(10deg); width: 36px; height: auto;">
+            <img src="/image/bg/flower_green.png" alt="G" class="absolute"
+                style="top: 50%; left: 8%; transform: rotate(-30deg); width: 40px; height: auto;">
+            <span class="absolute text-[40px] sm:text-[56px] md:text-[40px] font-bold text-[#F6D186]"
+                style="top: 60%; right: 10%; transform: rotate(10deg);">A</span>
+            <span class="absolute bottom-0 left-0">
+                <img src="/image/bg/dog.png" alt="dog" class="w-36 h-16 md:w-60 md:h-32">
+            </span>
+            <span class="absolute bottom-0 right-0">
+                <img src="/image/bg/flower1.png" alt="grass" class="w-36 h-20 md:w-96 md:h-56">
+            </span>
+        </div>
+        
+        <section class="max-w-5xl mx-auto text-center sm:py-16 px-10 mt-10 sm:px-6 bg-white sm:mt-32">
+            <!-- Introduction Text -->
+            <p class="text-base text-lg sm:text-xl lg:text-2xl" style="letter-spacing: 1.5px; line-height: 1.6;">
+                The name Sign - Lish combines "<span class="text-blue-500 font-bold">Sign</span>", meaning signal or
+                <span class="text-blue-500 font-bold">sign language</span>, and "<span
+                    class="text-red-500 font-bold">Lish</span>" from
+                <span class="text-red-500 font-bold">English</span>. It reflects our website's goal to teach ASL basics
+                while
+                connecting sign language with English communication.
+            </p>
+        </section>
+
+        <section class="max-w-5xl mx-auto text-center py-12 sm:py-16 px-6 bg-white" style="letter-spacing: 1.5px;">
+            <!-- Benefits Heading -->
+            <h2 class="text-2xl sm:text-4xl font-bold mb-10" style="letter-spacing: 2px;">Benefits of Sign - Lish</h2>
+
+            <!-- Benefits Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" style="letter-spacing: 1.5px;">
+                <!-- Easy Learning Card -->
+                <div
+                    class="bg-[#F0F8FF] p-6 sm:p-8 rounded-lg shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="/image/icon/add.png" alt="Plus sign" class="h-10 w-10">
+                        <h3 class="text-lg sm:text-2xl font-bold ml-6">Easy Learning :</h3>
+                    </div>
+                    <p class="sm:text-xl">Step-by-step guides and visual demonstrations make learning ASL alphabet
+                        simple and fun.</p>
+                </div>
+
+                <!-- Interactive Practice Card -->
+                <div
+                    class="bg-[#F0F8FF] p-6 sm:p-8 rounded-lg shadow-md transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300">
+                    <div class="flex items-center justify-center mb-4">
+                        <img src="/image/icon/add.png" alt="Plus sign" class="h-10 w-10">
+                        <h3 class="text-lg sm:text-2xl font-bold ml-6">Interactive Practice :</h3>
+                    </div>
+                    <p class="sm:text-xl">Engage in activities to test and refine your skills, ensuring you're mastering
+                        the hand shapes for each letter.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-5xl mx-auto text-center py-12 sm:py-16 px-6 sm:px-8 bg-white">
+            <!-- Additional Section After Benefits -->
+            <section class="sm:px-8" style="letter-spacing: 1.5px; line-height: 1.6;">
+                <h3 class="text-2xl sm:text-3xl font-bold mb-14 text-left">Once you've mastered the ASL alphabet, you
+                    can :</h3>
+
+                <!-- Checklist Section -->
+                <ul class="space-y-6 max-w-4xl mx-auto">
+                    <!-- First Checklist Item -->
+                    <li class="flex items-start text-left mb-12">
+                        <img src="/image/icon/check.png" alt="Checkmark" class="h-10 w-10 flex-shrink-0">
+                        <div class="ml-4">
+                            <h4 class="text-xl sm:text-2xl font-semibold">Fingerspell Names and Words :</h4>
+                            <p class="text-lg sm:text-xl">Start spelling out names and common words for basic
+                                communication.</p>
+                        </div>
+                    </li>
+
+                    <!-- Second Checklist Item -->
+                    <li class="flex items-start text-left mb-12">
+                        <img src="/image/icon/check.png" alt="Checkmark" class="h-10 w-10 flex-shrink-0">
+                        <div class="ml-4">
+                            <h4 class="text-xl sm:text-2xl font-semibold">Advance to Full ASL :</h4>
+                            <p class="text-lg sm:text-xl">After getting the alphabet down, expand into more complex
+                                phrases and full conversations in ASL.</p>
+                        </div>
+                    </li>
+
+                    <!-- Third Checklist Item -->
+                    <li class="flex items-start text-left mb-12">
+                        <img src="/image/icon/check.png" alt="Checkmark" class="h-10 w-10 flex-shrink-0">
+                        <div class="ml-4">
+                            <h4 class="text-xl sm:text-2xl font-semibold">Connect with the Deaf Community :</h4>
+                            <p class="text-lg sm:text-xl">Learning ASL allows you to engage more meaningfully with the
+                                Deaf community and break down communication barriers.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+        <!--message-->
+        <section
+            class="max-w-5xl mx-auto text-center py-12 sm:py-16 px-6 sm:px-8 bg-white text-lg sm:text-xl lg:text-3xl mb-10"
+            style="letter-spacing: 1.5px;">
+            With Sign - Lish, you're taking the first step toward<br>
+            becoming fluent in ASL !
+        </section>
+
+        <div class="relative w-full">
+            <!-- Image Section -->
+            <div class="flex justify-between items-end w-full px-4 md:px-0 sm:mb-[-250px] mb-[-5px]">
+                <!-- Negative margin for overlap -->
+                <span class="flex-shrink-0">
+                    <img src="/image/bg/flower_us.png" alt="flower"
+                        class="w-24 h-24 sm:w-36 sm:h-24 md:w-64 md:h-36 z-0"> <!-- Lower z-index -->
+                </span>
+                <span class="flex-shrink-0">
+                    <img src="/image/bg/flower_us.png" alt="flower"
+                        class="w-24 h-24 sm:w-36 sm:h-24 md:w-64 md:h-48 z-0"> <!-- Lower z-index -->
+                </span>
+            </div>
+
+            <!-- Footer Section -->
+            <footer
+                class="relative w-full max-w-[90%] mx-auto px-4 sm:px-6 py-6 rounded-3xl transition-all duration-300 flex flex-col md:flex-row items-center z-20 mb-4"
+                style="background-color:#D4DDFF;">
+                <div class="flex items-center md:mb-0">
+                    <!-- Logo Section -->
+                    <img class="h-10 sm:h-16" src="/image/icon/logo.png" alt="logo">
+                </div>
+
+                <!-- Contact Information -->
+                <div class="flex flex-col text-sm sm:text-xl md:text-left md:ml-6 " style="letter-spacing: 1.5px; line-height: 1.6;">
+                    <p class="text-black font-semibold mb-1">Contact us :</p>
+                    <p class="text-black">tel: 099-999-9999</p>
+                    <p class="text-black">facebook: SIGN LISH THAILAND</p>
+                    <p class="text-black">instagram: SIGN_LISH.THAILAND</p>
+                    <p class="text-black">gmail: SIGNLISH@gmail.com</p>
+                </div>
+            </footer>
+        </div>
+
+
+</body>
+
+</html>

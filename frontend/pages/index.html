@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signlish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Montserrat", sans-serif !important;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+    <!-- Navigation bar -->
+    <nav id="navbar"
+        class="fixed top-4 left-0 right-0 max-w-[90%] z-20 px-4 mx-auto rounded-3xl transition-all duration-300 bg-[#9EDDFF]">
+        <div class="w-full">
+            <div class="text-xl items-center flex justify-between w-full text-black h-16 px-4">
+                <div class="h-full flex items-center">
+                    <img class="h-10" src="/image/icon/logo.png" alt=" logo">
+                </div>
+                <div class="hidden md:flex gap-16 items-center">
+                    <a class="text-black" href="aboutus.html">ABOUT US</a>
+                    <a class="text-black" href="letstest.html">LET’S TEST</a>
+                </div>
+                <div class="block md:hidden">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <svg class="w-8 h-8 text-black" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden flex flex-col gap-2 mt-4 px-4">
+                <a class="text-black py-2" href="aboutus.html">ABOUT US</a>
+                <a class="text-black py-2" href="letstest.html">LET’S TEST</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Script for mobile menu toggle -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+        let lastScrollTop = 0;
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                navbar.style.transform = `translateY(-${navbar.offsetHeight + 16}px)`; // 16px corresponds to top-4
+            } else {
+                navbar.style.transform = "translateY(0)";
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
+    <!-- Centered content -->
+    <div class="min-h-screen flex justify-center items-center">
+        <div
+            class="relative w-full max-w-6xl h-auto flex flex-col md:flex-row justify-center items-center bg-white px-6 py-10 md:px-12 md:py-20 rounded-xl">
+            <!-- Left Section: Text Content -->
+            <div class="w-full md:w-1/2 flex flex-col justify-center items-center text-center px-4 md:px-8">
+                <h1 class="text-4xl font-bold tracking-wider text-black mb-4">
+                    <img src="/image/icon/logo_big.png" alt="hand icon" class="inline-block w-72 h-48">
+                </h1>
+                <p class="text-2xl justify-center items-center text-center text-black mb-6" style="letter-spacing: 3px"
+                    ;>
+                    "Even in silence, <br>
+                    hands can speak the <br>
+                    loudest emotions."
+                </p>
+            </div>
+
+            <!-- Right Section: Image Content -->
+            <div class="w-full md:w-1/2 flex justify-center items-center px-4 md:px-8 ">
+                <img class="w-auto max-w-full h-auto" src="/image/bg/sign_lang.png" alt="Sign language illustration">
+            </div>
+        </div>
+        <!-- ตัวอักษรพื้นหลัง -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+            <span class="absolute text-[45px] md:text-[100px] font-bold text-[#bfe5ef]"
+                style="top: 10%; left: 5%;transform: rotate(-30deg);">A</span>
+            <span class="absolute text-[32px] md:text-[78px] font-bold text-[#ff8150]"
+                style="bottom: 20%; left: 15%;transform: rotate(10deg);">T</span>
+            <span class="absolute text-[48px] md:text-[60px] font-bold text-[#74b7a0]"
+                style="bottom: 10%; left: 40%;transform: rotate(20deg);">M</span>
+            <span class="absolute text-[32px] md:text-[100px] font-bold text-[#ef94ca]"
+                style="top: 10%; right: 45%;transform: rotate(-10deg);">J</span>
+            <span class="absolute text-[70px] md:text-[78px] font-bold text-[#d0c3f1]"
+                style="top: 50%; right: 10%;transform: rotate(10deg);">C</span>
+        </div>
+    </div>
+    <!-- Container for introduce -->
+    <div class="relative bg-[#FEF9E7] p-6 rounded-lg shadow-md mt-10 mx-4 md:mx-48"
+        style="border-left: 10px solid #F8A7A5;">
+        <!-- Text content -->
+        <div class="text-[#2E3136] text-lg md:text-xl"
+            style="font-family: 'Montserrat', sans-serif; line-height: 1.7;letter-spacing: 1.7px;">
+            <span>
+                Learning a new language can feel overwhelming, but every language begins with its alphabet. We have
+                designed Sign-Lish to introduce users to the foundation of <span
+                    class="text-blue-600 font-bold">American Sign Language the ASL alphabet</span> so they can start
+                their journey toward communicating through sign language.
+            </span>
+        </div>
+    </div>
+    <!-- ข้อความก่อนเริ่มเรียนรู้ -->
+    <div class="text-4xl md:text-2xl lg:text-5xl text-[#2E3136] p-4 mt-6 mx-4 md:mx-48 font-bold"
+        style="letter-spacing: 2px; line-height: 1.5;">
+        Let’s start learning<br>
+        together !
+        <!-- สร้างกรอบสำหรับใส่ข้อมูล alphabet ที่จะทำการสอน -->
+        <div class="flex flex-col items-center " id="event">
+            <div
+                class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center w-full p-6">
+                 <!-- เขียนสคริปส์สำหรับกำหนดรูปภาพและตัวอักษรในกรอบ -->
+                <script>
+                    const events = [
+                        { id: 1, name: "A", img: "/image/alphabet/A.png" },
+                        { id: 2, name: "B", img: "/image/alphabet/B.png" },
+                        { id: 3, name: "C", img: "/image/alphabet/C.png" },
+                        { id: 4, name: "D", img: "/image/alphabet/D.png" },
+                        { id: 5, name: "E", img: "/image/alphabet/E.png" },
+                        { id: 6, name: "F", img: "/image/alphabet/F.png" },
+                        { id: 7, name: "G", img: "/image/alphabet/G.png" },
+                        { id: 8, name: "H", img: "/image/alphabet/H.png" },
+                        { id: 9, name: "I", img: "/image/alphabet/I.png" },
+                        { id: 10, name: "J", img: "/image/alphabet/J.png" },
+                        { id: 11, name: "K", img: "/image/alphabet/K.png" },
+                        { id: 12, name: "L", img: "/image/alphabet/L.png" },
+                        { id: 13, name: "M", img: "/image/alphabet/M.png" },
+                        { id: 14, name: "N", img: "/image/alphabet/N.png" },
+                        { id: 15, name: "O", img: "/image/alphabet/O.png" },
+                        { id: 16, name: "P", img: "/image/alphabet/P.png" },
+                        { id: 17, name: "Q", img: "/image/alphabet/Q.png" },
+                        { id: 18, name: "R", img: "/image/alphabet/R.png" },
+                        { id: 19, name: "S", img: "/image/alphabet/S.png" },
+                        { id: 20, name: "T", img: "/image/alphabet/T.png" },
+                        { id: 21, name: "U", img: "/image/alphabet/U.png" },
+                        { id: 22, name: "V", img: "/image/alphabet/V.png" },
+                        { id: 23, name: "W", img: "/image/alphabet/W.png" },
+                        { id: 24, name: "X", img: "/image/alphabet/X.png" },
+                        { id: 25, name: "Y", img: "/image/alphabet/Y.png" },
+                        { id: 26, name: "Z", img: "/image/alphabet/Z.png" }
+                    ];
+
+                     // วนแสดงอักษร A ถึง Z 
+                    events.forEach(event => {
+                        document.write(`
+        <div class="bg-[#F9F2EE]  mt-10 mb-10 shadow-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 rounded-full w-full max-w-[150px] flex justify-center items-center flex-col w-[120px] h-[200px]">
+            <a href="popup.html?letter=${event.name}" class="flex flex-col items-center">
+                <img class="rounded-lg mb-4 w-full h-[70px]" src="${event.img}" alt="${event.name}">
+                <div class="text-3xl sm:text-5xl text-center font-normal" style="font-family: 'Montserrat', sans-serif;">
+                    <p class="line-clamp-2">${event.name}</p>
+                </div>
+            </a>
+        </div>
+    `);
+                    });
+                </script>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- ปุ่มสำหรับย้ายไปยังหน้าต่อไป-->
+    <div class="z-10 flex justify-center p-4">
+        <a href="letstest.html">
+            <button
+                class="flex flex-wrap md:flex-nowrap items-center justify-start text-white  py-2 px-6 rounded-full w-full md:w-auto transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 text-sm md:text-xl lg:text-2xl"
+                style="background-color: #2E3136; letter-spacing: 1.5px;">
+                
+                <!-- Let's move on text, wraps on smaller screens -->
+                <span style="color: #FFF4B5; font-weight: bold;" class="block w-full md:inline md:w-auto text-left">Let's move on</span>
+                
+                <!-- Grouping the "to the next step for your journey" and the image together in an inline-flex -->
+                <span class="inline-flex items-center whitespace-nowrap">
+                    &nbsp;&nbsp;to the next step for your journey
+                    <img src="/image/icon/right.png" alt="Emoticon" class="ml-3 w-6 h-6 md:w-8 md:h-8 lg:w-6 lg:h-6">
+                </span>
+            </button>
+        </a>
+
+    </div>
+    <div class="flex flex-col justify-center items-center w-full">
+        <!-- รูปภาพพื้นหลัง -->
+        <div class="flex justify-between items-end w-full">
+            <span>
+                <img src="/image/bg/flower.png" alt="dog" class="w-36 h-20 md:w-64 md:h-48">
+            </span>
+            
+            <span>
+                <img src="/image/bg/flower1.png" alt="grass" class="w-36 h-20 md:w-64 md:h-48">
+            </span>
+        </div>
+    </div>
+    <script>
+// ฟังก์ชันบันทึกตำแหน่งการเลื่อนหน้าจอเมื่อผู้ใช้ปิดหน้าเว็บ
+window.onbeforeunload = function () {
+    // บันทึกตำแหน่งการเลื่อนหน้าจอลงใน LocalStorage
+    localStorage.setItem('scrollPosition', window.scrollY);
+};
+
+// เรียกใช้ฟังก์ชัน loadLetterData เมื่อโหลดหน้าเว็บเสร็จสิ้น
+window.onload = function () {
+    loadLetterData(); // โหลดข้อมูลตัวอักษร
+    // กู้คืนตำแหน่งการเลื่อนหน้าจอถ้ามีการบันทึกไว้
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    if (scrollPosition) {
+        // เลื่อนไปยังตำแหน่งที่บันทึกไว้
+        window.scrollTo(0, parseInt(scrollPosition, 10));
+        // ลบข้อมูลตำแหน่งการเลื่อนหน้าจอหลังจากใช้งานเสร็จ
+        localStorage.removeItem('scrollPosition');
+    }
+};
+    </script>
+
+</body>
+</html>
